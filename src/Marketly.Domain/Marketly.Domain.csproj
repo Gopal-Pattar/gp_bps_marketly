@@ -1,0 +1,3 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><AssemblyName>Marketly.Domain</AssemblyName><RootNamespace>Marketly.Domain</RootNamespace></PropertyGroup>
+</Project>

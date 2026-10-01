@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup><AssemblyName>Marketly.Orders.Api</AssemblyName><RootNamespace>Marketly.Api</RootNamespace></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Marketly.Application/Marketly.Application.csproj" />
+    <ProjectReference Include="../Marketly.Infrastructure/Marketly.Infrastructure.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <PackageReference Include="Swashbuckle.AspNetCore" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,16 @@
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Application/bin/Debug/net10.0/Marketly.Application.deps.json
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Application/bin/Debug/net10.0/Marketly.Application.dll
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Application/bin/Debug/net10.0/Marketly.Application.pdb
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Application/bin/Debug/net10.0/Marketly.Domain.dll
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Application/bin/Debug/net10.0/Marketly.Domain.pdb
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Application/obj/Debug/net10.0/Marketly.Application.csproj.AssemblyReference.cache
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Application/obj/Debug/net10.0/Marketly.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Application/obj/Debug/net10.0/Marketly.Application.AssemblyInfoInputs.cache
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Application/obj/Debug/net10.0/Marketly.Application.AssemblyInfo.cs
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Application/obj/Debug/net10.0/Marketly.Application.csproj.CoreCompileInputs.cache
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Application/obj/Debug/net10.0/Marketly.Application.sourcelink.json
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Application/obj/Debug/net10.0/Marketly.EDEABF41.Up2Date
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Application/obj/Debug/net10.0/Marketly.Application.dll
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Application/obj/Debug/net10.0/refint/Marketly.Application.dll
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Application/obj/Debug/net10.0/Marketly.Application.pdb
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Application/obj/Debug/net10.0/ref/Marketly.Application.dll

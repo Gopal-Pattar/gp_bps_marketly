@@ -1,0 +1,12 @@
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Domain/bin/Debug/net10.0/Marketly.Domain.deps.json
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Domain/bin/Debug/net10.0/Marketly.Domain.dll
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Domain/bin/Debug/net10.0/Marketly.Domain.pdb
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Domain/obj/Debug/net10.0/Marketly.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Domain/obj/Debug/net10.0/Marketly.Domain.AssemblyInfoInputs.cache
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Domain/obj/Debug/net10.0/Marketly.Domain.AssemblyInfo.cs
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Domain/obj/Debug/net10.0/Marketly.Domain.csproj.CoreCompileInputs.cache
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Domain/obj/Debug/net10.0/Marketly.Domain.sourcelink.json
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Domain/obj/Debug/net10.0/Marketly.Domain.dll
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Domain/obj/Debug/net10.0/refint/Marketly.Domain.dll
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Domain/obj/Debug/net10.0/Marketly.Domain.pdb
+/Users/gopalpattar/Documents/Codex/2026-09-26/l-et-s-build-this-as/src/Marketly.Domain/obj/Debug/net10.0/ref/Marketly.Domain.dll

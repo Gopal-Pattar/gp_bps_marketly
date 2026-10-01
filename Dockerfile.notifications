@@ -1,0 +1,12 @@
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+WORKDIR /src
+COPY Directory.Build.props Directory.Packages.props Marketly.sln ./
+COPY src/ src/
+RUN dotnet restore src/Marketly.Notifications.Worker/Marketly.Notifications.Worker.csproj
+RUN dotnet publish src/Marketly.Notifications.Worker/Marketly.Notifications.Worker.csproj -c Release -o /app/publish --no-restore
+
+FROM mcr.microsoft.com/dotnet/runtime:10.0 AS runtime
+WORKDIR /app
+COPY --from=build /app/publish .
+USER $APP_UID
+ENTRYPOINT ["dotnet", "Marketly.Notifications.Worker.dll"]

@@ -1,0 +1,129 @@
+services:
+  orders-postgres:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: marketly
+      POSTGRES_USER: marketly
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-marketly_dev}
+    ports: ["5432:5432"]
+    volumes: ["marketly_data:/var/lib/postgresql"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U marketly -d marketly"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+  orders-api:
+    build: .
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      AUTOMAPPER_LICENSE_KEY: ${AUTOMAPPER_LICENSE_KEY:-}
+      ConnectionStrings__Orders: Host=orders-postgres;Port=5432;Database=marketly;Username=marketly;Password=${POSTGRES_PASSWORD:-marketly_dev}
+      Jwt__Secret: ${JWT_SECRET:-local-dev-only-marketly-secret-key-change-before-deploy-8f91}
+      Services__CatalogUrl: http://catalog-api:8080
+      ServiceAuth__ApiKey: ${SERVICE_API_KEY:-marketly-local-service-key}
+      ServiceBus__ConnectionString: ${SERVICE_BUS_CONNECTION_STRING:-}
+      ServiceBus__FullyQualifiedNamespace: ${SERVICE_BUS_FULLY_QUALIFIED_NAMESPACE:-}
+      ServiceBus__Queue: marketly-orders
+      Database__ApplyMigrations: "true"
+      Payment__Provider: ${PAYMENT_PROVIDER:-Simulated}
+      Razorpay__KeyId: ${RAZORPAY_KEY_ID:-}
+      Razorpay__KeySecret: ${RAZORPAY_KEY_SECRET:-}
+    ports: ["8080:8080"]
+    depends_on:
+      orders-postgres:
+        condition: service_healthy
+  catalog-postgres:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: marketly_catalog
+      POSTGRES_USER: marketly
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-marketly_dev}
+    ports: ["5433:5432"]
+    volumes: ["marketly_catalog_data:/var/lib/postgresql"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U marketly -d marketly_catalog"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+  catalog-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.catalog
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      AUTOMAPPER_LICENSE_KEY: ${AUTOMAPPER_LICENSE_KEY:-}
+      ConnectionStrings__Catalog: Host=catalog-postgres;Port=5432;Database=marketly_catalog;Username=marketly;Password=${POSTGRES_PASSWORD:-marketly_dev}
+      ServiceAuth__ApiKey: ${SERVICE_API_KEY:-marketly-local-service-key}
+      Database__ApplyMigrations: "true"
+      Database__SeedDemoData: "true"
+    ports: ["8081:8080"]
+    depends_on:
+      catalog-postgres:
+        condition: service_healthy
+  identity-postgres:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: marketly_identity
+      POSTGRES_USER: marketly
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-marketly_dev}
+    ports: ["5434:5432"]
+    volumes: ["marketly_identity_data:/var/lib/postgresql"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U marketly -d marketly_identity"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+  identity-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.identity
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      AUTOMAPPER_LICENSE_KEY: ${AUTOMAPPER_LICENSE_KEY:-}
+      ConnectionStrings__Identity: Host=identity-postgres;Port=5432;Database=marketly_identity;Username=marketly;Password=${POSTGRES_PASSWORD:-marketly_dev}
+      Jwt__Secret: ${JWT_SECRET:-local-dev-only-marketly-secret-key-change-before-deploy-8f91}
+      Database__ApplyMigrations: "true"
+    ports: ["8082:8080"]
+    depends_on:
+      identity-postgres:
+        condition: service_healthy
+  notifications-postgres:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_DB: marketly_notifications
+      POSTGRES_USER: marketly
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-marketly_dev}
+    volumes: ["marketly_notifications_data:/var/lib/postgresql"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U marketly -d marketly_notifications"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+  notifications-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.notifications
+    environment:
+      ConnectionStrings__Notifications: Host=notifications-postgres;Port=5432;Database=marketly_notifications;Username=marketly;Password=${POSTGRES_PASSWORD:-marketly_dev}
+      ServiceBus__ConnectionString: ${SERVICE_BUS_CONNECTION_STRING:-}
+      ServiceBus__FullyQualifiedNamespace: ${SERVICE_BUS_FULLY_QUALIFIED_NAMESPACE:-}
+      ServiceBus__Queue: marketly-orders
+      Database__ApplyMigrations: "true"
+    depends_on:
+      notifications-postgres:
+        condition: service_healthy
+  storefront:
+    image: nginx:1.27-alpine
+    ports: ["3000:80"]
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html:ro
+      - ./styles.css:/usr/share/nginx/html/styles.css:ro
+      - ./app.js:/usr/share/nginx/html/app.js:ro
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./README.md:/usr/share/nginx/html/README.md:ro
+    depends_on: [orders-api, catalog-api, identity-api]
+volumes:
+  marketly_data:
+  marketly_catalog_data:
+  marketly_identity_data:
+  marketly_notifications_data:
